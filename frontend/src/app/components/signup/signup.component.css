@@ -1,0 +1,15 @@
+a {
+    text-decoration: none;
+}
+.company-logo img {
+    width: 270px;
+}
+
+.left-side{
+    background-color: #3bb78f;
+    background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+}
+
+.card {
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
