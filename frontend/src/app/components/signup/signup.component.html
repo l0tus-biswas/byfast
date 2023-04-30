@@ -35,63 +35,108 @@
       </div>
     </div>
     <div
-      class="col-lg-6 col-md-6 col-sm-12 d-flex align-items-center justify-content-center my-5 py-lg-0 py-md-0 py-5 order-lg-1 order-1">
+      class="col-lg-6 col-md-6 col-sm-12  d-flex align-items-center justify-content-center my-5 py-lg-0 py-md-0 py-5 order-lg-1 order-1">
       <div>
         <div class="company-logo text-center">
           <a href=""><h1>ByFaster</h1></a>
         </div>
-        <div class="card mt-5">
-
-          <div class="card-body">
-            <form #registerUser="ngForm" (ngSubmit)="signupUserFunc(registerUser)" class="needs-validation" novalidate="">
-              <div class="mb-3">
-                <label for="emailAdderss" class="form-label">Email Address</label>
-                <input type="email" name="emailAdderss" #emailAdderssRef="ngModel" class="form-control " ngModel
-                  required>
-                <div *ngIf="emailAdderssRef.errors && (emailAdderssRef.dirty || emailAdderssRef.touched)"
-                  style="text-align:left; color:red;">
-                  <div [hidden]="!emailAdderssRef.errors">
-                    <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                        stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                      </svg> Required</p>
-
-                  </div>
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" #passwordRef="ngModel" class="form-control " ngModel required>
-                <div *ngIf="passwordRef.errors && (passwordRef.dirty || passwordRef.touched)"
-                  style="text-align:left; color:red;">
-                  <div [hidden]="!passwordRef.errors">
-                    <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
-                        stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="12" cy="12" r="10"></circle>
-                        <line x1="12" y1="16" x2="12" y2="12"></line>
-                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                      </svg> Required</p>
-
-                  </div>
-                </div>
-              </div>
-              <button type="submit" class="btn btn-dark col-12" [disabled]="!registerUser.form.valid">Sign Up</button>
-            </form>
-            <div>
-              <p class="pt-3">Already have an account ? <span><a href="signin">Sign In</a></span> </p>
-            
-            </div>
-          </div>
-
-
-          <div class="card-footer text-muted">
-            <p>By signing up, you agree to our terms & privacy policy.</p>
+        <div *ngIf="onRegisterSuccess == true; else elseBlock" class="d-flex justify-content-center align-items-center">
+          <div class="alert alert-warning mt-5 w-75" role="alert">
+          <p><img src="https://img.icons8.com/?size=512&id=63262&format=png" width="25" alt=""> A verification link has been sent to your email account.</p>
+          <hr>
+          <p>Please click on the link that has been sent to your email account to activate your account and continue your registration process. Make sure you entered right email address, or try again!</p>
           </div>
         </div>
+        <ng-template #elseBlock>
+          <div class="card mt-5" >
+
+            <div class="card-body">
+              <form #registerUser="ngForm" (ngSubmit)="signupUserFunc(registerUser)" class="needs-validation" novalidate="">
+                <div class="mb-3">
+                  <label for="firstName" class="form-label">First Name</label>
+                  <input type="text" name="firstName" #firstNameRef="ngModel" class="form-control " ngModel
+                    required>
+                  <div *ngIf="firstNameRef.errors && (firstNameRef.dirty || firstNameRef.touched)"
+                    style="text-align:left; color:red;">
+                    <div [hidden]="!firstNameRef.errors">
+                      <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                          stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="16" x2="12" y2="12"></line>
+                          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg> Required</p>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="lastName" class="form-label">Last Name</label>
+                  <input type="text" name="lastName" #lastNameRef="ngModel" class="form-control " ngModel
+                    required>
+                  <div *ngIf="lastNameRef.errors && (lastNameRef.dirty || lastNameRef.touched)"
+                    style="text-align:left; color:red;">
+                    <div [hidden]="!lastNameRef.errors">
+                      <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                          stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="16" x2="12" y2="12"></line>
+                          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg> Required</p>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="emailAdderss" class="form-label">Email Address</label>
+                  <input type="email" name="emailAdderss" #emailAdderssRef="ngModel" class="form-control " ngModel
+                    required>
+                  <div *ngIf="emailAdderssRef.errors && (emailAdderssRef.dirty || emailAdderssRef.touched)"
+                    style="text-align:left; color:red;">
+                    <div [hidden]="!emailAdderssRef.errors">
+                      <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                          stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="16" x2="12" y2="12"></line>
+                          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg> Required</p>
+  
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" name="password" #passwordRef="ngModel" class="form-control " ngModel required>
+                  <div *ngIf="passwordRef.errors && (passwordRef.dirty || passwordRef.touched)"
+                    style="text-align:left; color:red;">
+                    <div [hidden]="!passwordRef.errors">
+                      <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                          stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                          xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="12" cy="12" r="10"></circle>
+                          <line x1="12" y1="16" x2="12" y2="12"></line>
+                          <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg> Required</p>
+  
+                    </div>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-dark col-12" [disabled]="!registerUser.form.valid">Sign Up</button>
+              </form>
+              <div>
+                <p class="pt-3">Already have an account ? <span><a href="signin">Sign In</a></span> </p>
+              
+              </div>
+            </div>
+  
+  
+            <div class="card-footer text-muted">
+              <p>By signing up, you agree to our terms & privacy policy.</p>
+            </div>
+          </div>
+        </ng-template>
       </div>
 
     </div>

@@ -1,0 +1,129 @@
+<section class="container-fluid mb-5">
+    <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-lg-6 col-md-8 col-12 mt-5" *ngIf="brandSetupSuccess == false; else elseBlock">
+            <h1>Setup a brand</h1>
+            <p>Information about the business or organization you will be sending emails on behalf. These information
+                will appear in your emails to your recipients and in the unsubscribe page.</p>
+
+            <hr>
+
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0"
+                    aria-valuemax="100">50%</div>
+            </div>
+            <h5 class="text-muted my-3">Step 1 of 2</h5>
+
+            <div>
+                <form #brandInfo="ngForm" (ngSubmit)="createBrand(brandInfo)" class="needs-validation" novalidate="">
+                    <div class="row mb-5">
+                        <div class="col-md-6 col-12">
+                            <div class="mb-3">
+                                <label for="brandName" class="form-label">Brand Name </label>
+                                <input type="text" name="brandName" #brandNameRef="ngModel" class="form-control " ngModel
+                                  required>
+                                <div *ngIf="brandNameRef.errors && (brandNameRef.dirty || brandNameRef.touched)"
+                                  style="text-align:left; color:red;">
+                                  <div [hidden]="!brandNameRef.errors">
+                                    <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                        stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                      </svg> Required</p>
+                
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="col-md-6 col-12">
+                            <div class="mb-3">
+                                <label for="senderName" class="form-label">Sender Name</label>
+                                <input type="text" name="senderName" #senderNameRef="ngModel" class="form-control " ngModel
+                                  required>
+                                <div *ngIf="senderNameRef.errors && (senderNameRef.dirty || senderNameRef.touched)"
+                                  style="text-align:left; color:red;">
+                                  <div [hidden]="!senderNameRef.errors">
+                                    <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                        stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <line x1="12" y1="16" x2="12" y2="12"></line>
+                                        <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                      </svg> Required</p>
+                
+                                  </div>
+                                </div>
+                              </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="senderEmailAddress" class="form-label">Sender Email Address</label>
+                            <input type="email" name="senderEmailAddress" #senderEmailAddressRef="ngModel" class="form-control " ngModel
+                              required>
+                            <div *ngIf="senderEmailAddressRef.errors && (senderEmailAddressRef.dirty || senderEmailAddressRef.touched)"
+                              style="text-align:left; color:red;">
+                              <div [hidden]="!senderEmailAddressRef.errors">
+                                <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                    stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                  </svg> Required</p>
+            
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mb-3">
+                            <label for="replyEmailAddress" class="form-label">Reply To Email Address</label>
+                            <input type="email" name="replyEmailAddress" #replyEmailAddressRef="ngModel" class="form-control " ngModel
+                              required>
+                            <div *ngIf="replyEmailAddressRef.errors && (replyEmailAddressRef.dirty || replyEmailAddressRef.touched)"
+                              style="text-align:left; color:red;">
+                              <div [hidden]="!replyEmailAddressRef.errors">
+                                <p class="mt-2"><svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24"
+                                    stroke-linecap="round" stroke-linejoin="round" class="mr-1 h-3 w-3" height="1em" width="1em"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                  </svg> Required</p>
+            
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <label for="timezone" class="form-label">Timezone</label>
+                            
+                            <select  class="form-select" id="timezone" name="timezone">
+                              <option *ngFor="let opt of this.timeZoneArr" [value]="opt.label" [selected]="opt.status == 'true'">
+                                {{opt.label}}</option>
+                              
+                           </select>
+                         
+                          </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-dark col-12" [disabled]="!brandInfo.form.valid">Continue</button>
+                  </form>
+            </div>
+        </div>
+        <ng-template #elseBlock>
+            <div class="col-lg-6 col-md-8 col-12 mt-5">
+                <h1>Account's ready!</h1>
+                <p>Come on in! Let's setup your first list and campaigns you dream about.</p>
+    
+                <hr>
+    
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0"
+                        aria-valuemax="100">100%</div>
+                </div>
+                <h5 class="text-muted my-3">Step 2 of 2</h5>
+    
+                <button class="btn btn-primary col-3">Lets Go</button>
+            </div>
+        </ng-template>
+        
+    </div>
+</section>

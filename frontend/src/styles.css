@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif&display=swap');
 
 *{
     padding: 0;
@@ -8,7 +9,8 @@
     font-size: 14px;
 }
 body{
-    font-family: 'Libre Baskerville', serif;
+    /* font-family: 'Libre Baskerville', serif; */
+    font-family: 'IBM Plex Serif', serif;
 }
 
 .btn{
